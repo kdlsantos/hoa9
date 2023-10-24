@@ -1,0 +1,7 @@
+---
+
+  - name: Installing Prometheus for (Ubuntu)
+    apt:
+      name: prometheus
+      state: latest
+    when: ansible_distribution == "Ubuntu"

@@ -1,0 +1,21 @@
+---
+
+  - name: Install PRometheus for (CentOS)
+    dnf:
+      name:
+       - epel-release
+       - snapd
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+  - name: Enabling snapd (CentOS)
+    command: systemctl enable --now snapd
+    when: ansible_distribution == "CentOS"
+
+  - name: Restart snapd (CentOS)
+    command: systemctl restart snapd
+    when: ansible_distribution == "CentOS"
+
+  - name: Prometheus for CentOS
+    command: snap install prometheus --classic
+    when: ansible_distribution == "CentOS"
